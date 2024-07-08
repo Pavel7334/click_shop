@@ -12,14 +12,14 @@
     </div>
 </div>
 
-<div class="container-center" style="background-image: url('{% static 'products/images/5.jpg' %}');">
+<div class="container-center">
     <h2 class="text-center mb-4">Популярные товары</h2>
     <div class="product-grid">
         <div class="product-card">
             <img src="{% static 'products/images/яйца.jpg' %}" alt="Яйцо белое">
             <h3>Яйцо белое</h3>
             <p>Свежие и богатые питательными веществами яйца для вашего стола.</p>
-            <a href="#" class="button">Подробнее</a>
+            <a href="{% url 'product_detail' 'yaico-beloe' %}" class="button">Подробнее</a>
         </div>
         <div class="product-card">
             <img src="{% static 'products/images/колбаса.jpg' %}" alt="Колбаса капчёная">
@@ -69,6 +69,25 @@
             <p>Нежное и сочное мраморное мясо, приготовленное на любой вкус.</p>
             <a href="#" class="button">Подробнее</a>
         </div>
+        <div class="product-card">
+            <img src="{% static 'products/images/яйца.jpg' %}" alt="Яйцо белое">
+            <h3>Яйцо белое</h3>
+            <p>Свежие и богатые питательными веществами яйца для вашего стола.</p>
+            <a href="#" class="button">Подробнее</a>
+        </div>
+        <div class="product-card">
+            <img src="{% static 'products/images/колбаса.jpg' %}" alt="Колбаса капчёная">
+            <h3>Колбаса капчёная</h3>
+            <p>Качественная колбаса с натуральными ингредиентами и отличным вкусом.</p>
+            <a href="#" class="button">Подробнее</a>
+        </div>
+        <div class="product-card">
+            <img src="{% static 'products/images/рыба.jpg' %}" alt="Рыба семга">
+            <h3>Рыба семга</h3>
+            <p>Свежая семга, богатая омега-3 жирными кислотами для здоровья сердца.</p>
+            <a href="#" class="button">Подробнее</a>
+        </div>
+        </div>
     </div>
 </div>
 
@@ -82,6 +101,10 @@
         ];
         var currentIndex = 0;
         var interval = 5000; // Интервал смены изображений в миллисекундах (например, 5 секунд)
+
+        // Установить первое изображение сразу
+        jumbotron.style.backgroundImage = 'url(' + images[currentIndex] + ')';
+        currentIndex = (currentIndex + 1) % images.length;
 
         function changeBackground() {
             jumbotron.style.backgroundImage = 'url(' + images[currentIndex] + ')';

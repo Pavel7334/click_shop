@@ -1,0 +1,27 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ product.name }} - Детали продукта
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static 'products/images/яйцо 300.jpg' %}" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-6">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p><strong>Цена:</strong> {{ product.price }} руб.</p>
+            {% if product.stock > 0 %}
+                <p><strong>В наличии:</strong> Да</p>
+            {% else %}
+                <p><strong>В наличии:</strong> Нет</p>
+            {% endif %}
+            <a href="#" class="btn btn-primary">Добавить в корзину</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
