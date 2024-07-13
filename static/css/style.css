@@ -379,3 +379,125 @@ nav ul li a:hover {
 .button:hover {
     background-color: #01e6ff;
 }
+
+/* Основные стили для контейнера */
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('{% static "products/images/5.jpg" %}') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.content-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+    max-height: calc(100vh - 200px); /* высота максимально 100% высоты экрана минус 200px */
+    overflow: auto; /* добавляем прокрутку при необходимости */
+}
+
+/* Стили для контейнера изображения */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    max-height: calc(100vh - 300px); /* ограничиваем высоту изображения */
+    overflow: hidden; /* скрываем часть изображения, если оно превышает высоту */
+}
+
+/* Стили для изображения */
+img {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto; /* автоматический расчет высоты изображения */
+    margin-top: 30px;
+}
+
+/* Стили для контейнера текста */
+.text-container {
+    text-align: center;
+    max-height: calc(100vh - 400px); /* ограничиваем высоту текста */
+    overflow: auto; /* добавляем прокрутку для текста при необходимости */
+}
+
+/* Стили для заголовков и текста */
+h2 {
+    font-size: 2.5rem;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+h4 {
+    font-size: 1.75rem;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.text-success,
+.text-danger {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+/* Стили для контейнера кнопок */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* Расстояние между кнопками */
+    max-height: calc(100vh - 500px); /* ограничиваем высоту контейнера кнопок */
+    overflow: auto; /* добавляем прокрутку для кнопок при необходимости */
+}
+
+/* Адаптивные стили для небольших экранов */
+@media (max-width: 767.98px) {
+    .content-box {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .lead {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .button {
+        font-size: 1rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 5px; /* Расстояние между кнопками для мобильных устройств */
+        max-height: calc(100vh - 600px); /* ограничиваем высоту контейнера кнопок для мобильных устройств */
+    }
+}
