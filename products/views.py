@@ -1,14 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, ProductImage
+from .models import Product
 
 
 def home_view(request):
-    return render(request, 'products/home.html')
-
-
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'products/product_list.html', {'products': products})
+    products = Product.objects.all().prefetch_related('images')
+    return render(request, 'products/home.html', {'products': products})
 
 
 def product_detail(request, slug):

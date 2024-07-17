@@ -8,11 +8,11 @@
 {% block content %}
 <div class="registration-container">
     <div class="content-box">
-        <div class="image-container">
+        <div class="img-rounded">
             {% if product_image %}
-                <img src="{{ product_image.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ product.name }}">
+                <img src="{{ product_image.image.url }}" class="img-fluid rounded shadow-sm custom-rounded" alt="{{ product.name }}">
             {% else %}
-                <img src="{% static 'default-image.jpg' %}" class="img-fluid rounded shadow-sm" alt="{{ product.name }}">
+                <img src="{% static 'default-image.jpg' %}" class="img-fluid rounded shadow-sm custom-rounded" alt="{{ product.name }}">
             {% endif %}
         </div>
         <div class="text-container">

@@ -1,50 +1,50 @@
-<!-- templates/products/product_list.html -->
-{% extends "accounts/base.html" %}
-{% load static %}
+<!--&lt;!&ndash; templates/products/product_list.html &ndash;&gt;-->
+<!--{% extends "accounts/base.html" %}-->
+<!--{% load static %}-->
 
-{% block title %}Главная{% endblock %}
+<!--{% block title %}Главная{% endblock %}-->
 
-{% block content %}
-<div class="jumbotron">
-    <div class="jumbotron-content">
-        <div class="jumbotron-text-black">
-            <h1>Добро пожаловать в наш интернет-магазин!</h1>
-        </div>
-        <a href="#" class="button">Начать покупки</a>
-    </div>
-</div>
+<!--{% block content %}-->
+<!--<div class="jumbotron">-->
+<!--    <div class="jumbotron-content">-->
+<!--        <div class="jumbotron-text-black">-->
+<!--            <h1>Добро пожаловать в наш интернет-магазин!</h1>-->
+<!--        </div>-->
+<!--        <a href="#" class="button">Начать покупки</a>-->
+<!--    </div>-->
+<!--</div>-->
 
-<div class="container-center">
-    <h2 class="text-center mb-4">Популярные товары</h2>
-    <div class="product-grid">
-        {% for product in products %}
-            <div class="col-md-4">
-                {% include "products/product_card.html" with product=product %}
-            </div>
-        {% endfor %}
-    </div>
-</div>
+<!--<div class="container-center">-->
+<!--    <h2 class="text-center mb-4">Популярные товары</h2>-->
+<!--    <div class="product-grid">-->
+<!--        {% for product in products %}-->
+<!--            <div class="col-md-4">-->
+<!--                {% include "products/product_card.html" with product=product %}-->
+<!--            </div>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var jumbotron = document.querySelector('.jumbotron');
-        var images = [
-            "{% static 'products/images/1.jpg' %}",
-            "{% static 'products/images/2.jpg' %}",
-            "{% static 'products/images/3.jpg' %}"
-        ];
-        var currentIndex = 0;
-        var interval = 5000;
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        var jumbotron = document.querySelector('.jumbotron');-->
+<!--        var images = [-->
+<!--            "{% static 'products/images/1.jpg' %}",-->
+<!--            "{% static 'products/images/2.jpg' %}",-->
+<!--            "{% static 'products/images/3.jpg' %}"-->
+<!--        ];-->
+<!--        var currentIndex = 0;-->
+<!--        var interval = 5000;-->
 
-        jumbotron.style.backgroundImage = 'url(' + images[currentIndex] + ')';
-        currentIndex = (currentIndex + 1) % images.length;
+<!--        jumbotron.style.backgroundImage = 'url(' + images[currentIndex] + ')';-->
+<!--        currentIndex = (currentIndex + 1) % images.length;-->
 
-        function changeBackground() {
-            jumbotron.style.backgroundImage = 'url(' + images[currentIndex] + ')';
-            currentIndex = (currentIndex + 1) % images.length;
-        }
+<!--        function changeBackground() {-->
+<!--            jumbotron.style.backgroundImage = 'url(' + images[currentIndex] + ')';-->
+<!--            currentIndex = (currentIndex + 1) % images.length;-->
+<!--        }-->
 
-        setInterval(changeBackground, interval);
-    });
-</script>
-{% endblock %}
+<!--        setInterval(changeBackground, interval);-->
+<!--    });-->
+<!--</script>-->
+<!--{% endblock %}-->

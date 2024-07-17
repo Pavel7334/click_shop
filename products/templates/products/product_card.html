@@ -1,13 +1,13 @@
-{% load static %}
-<div class="product-card">
-    <img src="{% static product.image %}" alt="{{ product.name }}" class="img-fluid">
-    <h2>{{ product.name }}</h2>
-    <p>{{ product.description }}</p>
-    <p><strong>Цена:</strong> {{ product.price }} руб.</p>
-    {% if product.stock > 0 %}
-        <p><strong>В наличии:</strong> Да</p>
-    {% else %}
-        <p><strong>В наличии:</strong> Нет</p>
-    {% endif %}
-    <a href="{% url 'product_detail' product.slug %}" class="btn btn-primary">Подробнее</a>
-</div>
+<!--{% load static %}-->
+<!--<div class="product-card">-->
+<!--    <img src="{% static product.image %}" alt="{{ product.name }}" class="img-fluid">-->
+<!--    <h2>{{ product.name }}</h2>-->
+<!--    <p>{{ product.description }}</p>-->
+<!--    <p><strong>Цена:</strong> {{ product.price }} руб.</p>-->
+<!--    {% if product.stock > 0 %}-->
+<!--        <p><strong>В наличии:</strong> Да</p>-->
+<!--    {% else %}-->
+<!--        <p><strong>В наличии:</strong> Нет</p>-->
+<!--    {% endif %}-->
+<!--    <a href="{% url 'product_detail' product.slug %}" class="btn btn-primary">Подробнее</a>-->
+<!--</div>-->
