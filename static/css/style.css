@@ -8,6 +8,11 @@ body {
     min-height: 100vh; /* Заполняет экран по вертикали */
     line-height: 1.6;
     color: #333;
+    background-color: #e9ecef; /* Цвет фона страницы */
+    background-attachment: fixed; /* Фиксирует фон относительно окна */
+    background-image: url('/static/products/images/5.jpg'); /* Укажите путь к вашему фону */
+    background-size: cover; /* Делает фон полностью покрывающим */
+    background-position: center; /* Центрирует фон */
 }
 
 /* Шапка */
@@ -149,8 +154,6 @@ nav ul li a:hover {
 .container .text-center.mb-4 {
     padding-top: 40px;
     text-align: center;
-    margin-bottom: 20px;
-    margin-top: 0;
     color: #333;
     font-family: "Arial", sans-serif; /* Шрифт Arial или другой без засечек */
     font-size: 24px;
@@ -174,6 +177,11 @@ nav ul li a:hover {
 
 .container .text-center.mb-4 a:hover {
     background-color: #e64a19;
+}
+
+.container-center .text-center.mb-4{
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 .product-grid {
@@ -438,6 +446,7 @@ img {
 h2 {
     font-size: 2.5rem;
     color: #343a40;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -505,4 +514,236 @@ h4 {
 .img-rounded {
     margin-top: 0;
     border-radius: 15px; /* Настройте значение по вашему усмотрению */
+}
+/* Стили для контейнера корзины */
+.cart-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Светлый фон для контейнера корзины */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    max-width: 1200px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера по горизонтали */
+    margin-top: 40px; /* Отступ сверху для опускания таблицы вниз */
+    margin-bottom: 50px;
+}
+
+.container .text-center.mb-4 {
+    padding-top: 0px;
+}
+
+/* Стили для карточки товара в корзине */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #dee2e6; /* Легкая граница */
+    border-radius: 8px; /* Закругленные углы карточки */
+    background-color: #fff; /* Белый фон карточки */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Стили для изображения товара в карточке */
+.cart-item-image img {
+    width: 100px;
+    height: 100px; /* Установим фиксированную высоту */
+    object-fit: cover; /* Обеспечивает, что изображение не будет искажено */
+    border-radius: 4px; /* Закругленные углы изображения */
+    margin-right: 20px;
+}
+
+/* Стили для деталей товара в карточке */
+.cart-item-details {
+    flex-grow: 1;
+}
+
+/* Стили для элементов управления количеством */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Стили для кнопок управления количеством */
+.quantity-controls .button {
+    padding: 8px 12px;
+    background-color: #f05f40; /* Красный фон для кнопок управления количеством */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.quantity-controls .button:hover {
+    background-color: #f05f40; /* Темнее при наведении */
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+.quantity-controls .button:active {
+    background-color: #f05f40; /* Темнее при нажатии */
+}
+
+/* Обновляем стили для кнопки удаления */
+.button.remove-item {
+    padding: 8px 12px;
+    background-color: #f05f40; /* Оранжевый фон */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: auto; /* Автоматическое пространство слева для выравнивания вправо */
+}
+
+/* Стили при наведении */
+.button.remove-item:hover {
+    background-color: #d84d2d; /* Темнее при наведении */
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+/* Стили при нажатии */
+.button.remove-item:active {
+    background-color: #c33c1c; /* Темнее при нажатии */
+}
+
+/* Если нужно добавить дополнительное позиционирование, например, внутри контейнера */
+.remove-item-container {
+    display: flex; /* Используем Flexbox для позиционирования */
+    justify-content: flex-end; /* Выровнять содержимое контейнера вправо */
+}
+
+/* Стили для общего блока корзины */
+.cart-total {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff; /* Белый фон блока с итогами */
+    border: 1px solid #dee2e6; /* Легкая граница */
+    border-radius: 8px; /* Закругленные углы блока */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    text-align: right; /* Выравнивание текста по правому краю */
+    position: relative; /* Чтобы добавить отступ снизу относительно родителя */
+    padding-bottom: 60px; /* Дополнительный отступ снизу для кнопки оформления заказа */
+}
+
+/* Стили для кнопки оформления заказа */
+.cart-total .button {
+    background-color: #28a745; /* Зеленый фон кнопки */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+    position: absolute; /* Позволяет позиционировать кнопку относительно блока */
+    bottom: 15px; /* Расстояние от нижнего края блока */
+    right: 15px; /* Расстояние от правого края блока */
+}
+
+.cart-total .button:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+.cart-total .button:active {
+    background-color: #1e7e34; /* Темнее при нажатии */
+}
+
+/* Стиль для счетчика количества товаров в корзине */
+.cart-item-count {
+    background-color: #dc3545; /* Красный фон */
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 8px;
+    vertical-align: top; /* Выровнять по верхнему краю */
+}
+
+/* Стили для поиска */
+#search-form {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#search-form button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+}
+
+.previous-searches {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    background: #fff;
+    position: absolute;
+    width: 200px;
+    display: none;
+}
+
+.previous-searches li {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.previous-searches li:hover {
+    background-color: #eee;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрирует элементы по горизонтали */
+    gap: 10px;
+    width: 100%;
+}
+
+#search-input {
+    flex-grow: 1; /* Позволяет полю ввода расширяться */
+    padding: 10px 200px 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 15px;
+    box-sizing: border-box; /* Включает padding и border в ширину элемента */
+    margin-right: 0px;
+    text-align: center; /* Выравнивает текст по центру */
+}
+
+#search-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#search-button:hover {
+    background-color: #45a049;
 }

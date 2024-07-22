@@ -9,20 +9,28 @@
 </head>
 <body>
     <header>
-        <h1 class="logo"><a href="{% url 'home' %}">Click Shop</a></h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Главная</a></li>
-                <li><a href="{% url 'home' %}">Каталог</a></li>
-                <li><a href="{% url 'home' %}">Корзина</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Выход</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Вход</a></li>
-                    <li><a href="{% url 'register' %}">Регистрация</a></li>
-                {% endif %}
-            </ul>
-        </nav>
+        <div class="header-content">
+            <h1 class="logo"><a href="{% url 'home' %}">Click Shop</a></h1>
+            <div class="search-container">
+                <form action="{% url 'search_results' %}" method="get" id="search-form">
+                    <input type="text" name="q" id="search-input" placeholder="Поиск товаров...">
+                    <button type="submit" id="search-button">Искать</button>
+                </form>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'home' %}">Каталог</a></li>
+                    <li><a href="{% url 'cart' %}">Корзина</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Выход</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Вход</a></li>
+                        <li><a href="{% url 'register' %}">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <div class="container" style="background-image: url('{% static 'products/images/5.jpg' %}');">
@@ -32,6 +40,39 @@
         </main>
     </div>
 
-    <h6 class="text-right">© 2024 Интернет-магазин. Все права защищены. 888-888-555-00-00-22 Горячая линия</h6>
+    <footer>
+        <h6 class="text-right">© 2024 Интернет-магазин. Все права защищены. 888-888-555-00-00-22 Горячая линия</h6>
+    </footer>
+
+<!--    <script>-->
+<!--        document.addEventListener('DOMContentLoaded', function () {-->
+<!--            const previousSearches = JSON.parse(localStorage.getItem('previousSearches')) || [];-->
+<!--            const previousSearchesList = document.getElementById('previous-searches');-->
+
+<!--            function renderPreviousSearches() {-->
+<!--                previousSearchesList.innerHTML = '';-->
+<!--                previousSearches.forEach(search => {-->
+<!--                    const li = document.createElement('li');-->
+<!--                    const a = document.createElement('a');-->
+<!--                    a.href = `{% url 'search_results' %}?q=${encodeURIComponent(search)}`;-->
+<!--                    a.textContent = search;-->
+<!--                    li.appendChild(a);-->
+<!--                    previousSearchesList.appendChild(li);-->
+<!--                });-->
+<!--            }-->
+
+<!--            renderPreviousSearches();-->
+
+<!--            const searchForm = document.getElementById('search-form');-->
+<!--            searchForm.addEventListener('submit', function (event) {-->
+<!--                const searchInput = document.getElementById('search-input').value;-->
+<!--                if (searchInput && !previousSearches.includes(searchInput)) {-->
+<!--                    previousSearches.push(searchInput);-->
+<!--                    localStorage.setItem('previousSearches', JSON.stringify(previousSearches));-->
+<!--                    renderPreviousSearches();-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
 </body>
 </html>

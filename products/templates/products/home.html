@@ -18,11 +18,11 @@
         {% for product in products %}
         <div class="product-card">
             {% with product.images.first as product_image %}
-                {% if product_image %}
-                    <img src="{{ product_image.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{% static 'default-image.jpg' %}" alt="{{ product.name }}">
-                {% endif %}
+            {% if product_image %}
+            <img src="{{ product_image.image.url }}" alt="{{ product.name }}">
+            {% else %}
+            <img src="{% static 'default-image.jpg' %}" alt="{{ product.name }}">
+            {% endif %}
             {% endwith %}
             <h3>{{ product.name }}</h3>
             <p>{{ product.description|slice:"100" }}...</p>

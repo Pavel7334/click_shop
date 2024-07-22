@@ -9,8 +9,8 @@
 <div class="registration-container">
     <div class="content-box">
         <div class="img-rounded">
-            {% if product_image %}
-                <img src="{{ product_image.image.url }}" class="img-fluid rounded shadow-sm custom-rounded" alt="{{ product.name }}">
+            {% if product.images.first %}
+                <img src="{{ product.images.first.image.url }}" class="img-fluid rounded shadow-sm custom-rounded" alt="{{ product.name }}">
             {% else %}
                 <img src="{% static 'default-image.jpg' %}" class="img-fluid rounded shadow-sm custom-rounded" alt="{{ product.name }}">
             {% endif %}
@@ -26,11 +26,11 @@
             {% endif %}
             <div class="button-container" style="display: flex; gap: 10px; align-items: center;">
                 {% if product.stock > 0 %}
-                    <a href="#" class="button">Добавить в корзину</a>
+                    <a href="{% url 'add_to_cart' product.id %}" class="button">Добавить в корзину</a>
                 {% else %}
                     <a href="#" class="button disabled" style="pointer-events: none; opacity: 0.5;">Добавить в корзину</a>
                 {% endif %}
-                <a href="/" class="button">На главную</a>
+                <a href="{% url 'home' %}" class="button">На главную</a>
             </div>
         </div>
     </div>

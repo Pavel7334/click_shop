@@ -1,0 +1,112 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% load cart_tags %}
+
+{% block title %}
+    Корзина
+{% endblock %}
+
+{% block content %}
+<div class="cart-container">
+    <h2 class="text-center mb-4">Ваша корзина</h2>
+    {% if cart and cart.items.exists %}
+        <div class="cart-items">
+            {% for item in cart.items.all %}
+                <div class="cart-item" id="cart-item-{{ item.id }}">
+                    <div class="cart-item-image">
+                        {% if item.product.images.first %}
+                            <img src="{{ item.product.images.first.image.url }}" alt="{{ item.product.name }}">
+                        {% else %}
+                            <img src="{% static 'default-image.jpg' %}" alt="{{ item.product.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="cart-item-details">
+                        <h3>{{ item.product.name }}</h3>
+                        <div class="quantity-controls">
+                            <a href="#" class="button decrease-quantity" data-item-id="{{ item.id }}">-</a>
+                            <span id="quantity-{{ item.id }}">Количество: {{ item.quantity }}</span>
+                            <a href="#" class="button increase-quantity" data-item-id="{{ item.id }}">+</a>
+                        </div>
+                        <p>Цена: {{ item.product.price }} руб.</p>
+                    </div>
+                    <a href="#" class="button remove-item" data-item-id="{{ item.id }}">Удалить</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="cart-total">
+            <h3>Общая стоимость: <span id="cart-total">{{ cart|cart_total }}</span></h3>
+            <a href="{% url 'checkout' %}" class="button">Оформить заказ</a>
+        </div>
+    {% else %}
+        <p class="text-center">Ваша корзина пуста</p>
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Увеличение количества
+        $('.increase-quantity').click(function(e) {
+            e.preventDefault();
+            var itemId = $(this).data('item-id');
+            $.ajax({
+                url: '/orders/increase-quantity/' + itemId + '/',
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    $('#quantity-' + itemId).text('Количество: ' + data.quantity);
+                    $('#cart-total').text(data.total + ' руб.');
+                },
+                error: function(xhr) {
+                    alert('Ошибка увеличения количества товара: ' + xhr.responseText);
+                }
+            });
+        });
+
+        // Уменьшение количества
+        $('.decrease-quantity').click(function(e) {
+            e.preventDefault();
+            var itemId = $(this).data('item-id');
+            $.ajax({
+                url: '/orders/decrease-quantity/' + itemId + '/',
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    $('#quantity-' + itemId).text('Количество: ' + data.quantity);
+                    $('#cart-total').text(data.total + ' руб.');
+                },
+                error: function(xhr) {
+                    alert('Ошибка уменьшения количества товара: ' + xhr.responseText);
+                }
+            });
+        });
+
+        // Удаление товара
+        $('.remove-item').click(function(e) {
+            e.preventDefault();
+            var itemId = $(this).data('item-id');
+            $.ajax({
+                url: '/orders/remove-item/' + itemId + '/',
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    $('#cart-item-' + itemId).remove();  // Удаление HTML элемента
+                    $('#cart-total').text(data.total + ' руб.');  // Обновление общей стоимости
+                    if (data.count === 0) {
+                        $('.cart-container').html('<p class="text-center">Ваша корзина пуста</p>');
+                    }
+                },
+                error: function(xhr) {
+                    alert('Ошибка удаления товара: ' + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

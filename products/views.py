@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
 
 
@@ -9,9 +10,23 @@ def home_view(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    product_image = product.images.first()
     context = {
         'product': product,
-        'product_image': product_image,
     }
     return render(request, 'products/product_detail.html', context)
+
+
+def search_view(request):
+    query = request.GET.get('q', '')
+    if query:
+        products = Product.objects.filter(
+            Q(name__icontains=query) | Q(description__icontains=query)
+        )
+    else:
+        products = Product.objects.none()
+
+    context = {
+        'products': products,
+        'query': query,
+    }
+    return render(request, 'products/search_results.html', context)
