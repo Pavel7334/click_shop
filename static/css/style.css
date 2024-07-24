@@ -385,7 +385,7 @@ nav ul li a:hover {
 }
 
 .button:hover {
-    background-color: #01e6ff;
+    background-color: #45a049;
 }
 
 /* Основные стили для контейнера */
@@ -745,5 +745,50 @@ h4 {
 }
 
 #search-button:hover {
+    background-color: #45a049;
+}
+
+
+/* Стили для страницы поиска */
+
+.search-results-container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 103px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-results-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.no-results {
+    font-size: 18px;
+    color: #d9534f;
+    text-align: center;
+}
+
+.back-home-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f05f40;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+}
+
+.back-home-button:hover {
     background-color: #45a049;
 }

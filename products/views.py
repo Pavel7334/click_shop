@@ -18,15 +18,16 @@ def product_detail(request, slug):
 
 def search_view(request):
     query = request.GET.get('q', '')
-    if query:
-        products = Product.objects.filter(
-            Q(name__icontains=query) | Q(description__icontains=query)
-        )
-    else:
-        products = Product.objects.none()
 
-    context = {
-        'products': products,
-        'query': query,
-    }
-    return render(request, 'products/search_results.html', context)
+    if query:
+        # Ищем продукт с именем, содержащим запрос
+        product = Product.objects.filter(name__icontains=query).first()
+        if product:
+            # Если найден продукт, перенаправляем на страницу деталей продукта
+            return render(request, 'products/product_detail.html', {'product': product})
+        else:
+            # Если продукта не найдено, выводим страницу результатов поиска
+            return render(request, 'products/search_results.html', {'query': query})
+
+    # Если запрос пуст, выводим страницу результатов поиска
+    return render(request, 'products/search_results.html', {'query': query})
