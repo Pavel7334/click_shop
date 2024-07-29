@@ -792,3 +792,29 @@ h4 {
 .back-home-button:hover {
     background-color: #45a049;
 }
+
+
+/* Добавьте стили для кнопок, если они отличаются от стандартных */
+.button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.button.small {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 3px;
+}
