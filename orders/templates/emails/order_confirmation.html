@@ -1,0 +1,17 @@
+{% autoescape off %}
+Здравствуйте, {{ order.user.get_full_name }}!
+
+Ваш заказ №{{ order.id }} успешно оформлен. Ожидайте курьера.
+
+Вот перечень вашего заказа:
+
+{% for item in order.items.all %}
+- {{ item.product.name }}: {{ item.quantity }} x {{ item.price }} руб.
+{% endfor %}
+
+Общая стоимость: {{ order.items.aggregate(total=Sum('price * quantity')) }} руб.
+
+Спасибо за покупку!
+
+С уважением, команда {{ site_name }}.
+{% endautoescape %}

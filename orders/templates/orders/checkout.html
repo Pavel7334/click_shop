@@ -7,7 +7,33 @@
 {% block content %}
 <div class="checkout-container">
     <h2 class="text-center mb-4">Оформление заказа</h2>
-    <!-- Добавьте здесь содержимое страницы оформления заказа -->
-    <p>Здесь будет форма для оформления заказа.</p>
+    <form method="post" action="" class="order-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.non_field_errors }}
+            <label for="{{ form.first_name.id_for_label }}">Имя:</label>
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.address.id_for_label }}">Адрес:</label>
+            {{ form.address }}
+            {{ form.address.errors }}
+        </div>
+        <div class="form-group">
+            <label>Способ оплаты:</label>
+            {{ form.payment_method }}
+            {{ form.payment_method.errors }}
+        </div>
+        <div class="form-group">
+            <p>Общая стоимость: {{ total_cost }} руб.</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Оформить заказ</button>
+    </form>
 </div>
 {% endblock %}

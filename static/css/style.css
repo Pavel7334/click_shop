@@ -793,28 +793,88 @@ h4 {
     background-color: #45a049;
 }
 
+/* Основной контейнер для формы оформления заказа */
+.checkout-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    background: linear-gradient(to right, #ffffff, #f9f9f9);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
 
-/* Добавьте стили для кнопок, если они отличаются от стандартных */
-.button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
+/* Заголовок формы */
+.checkout-container h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
     text-align: center;
-    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Форма заказа */
+.order-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Группа полей формы */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Метка формы */
+.form-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Поля ввода */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Поля ввода при фокусе */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Выбор опции */
+.form-check-input {
+    margin-right: 12px;
+}
+
+/* Кнопка */
+.btn {
+    padding: 12px 25px;
     font-size: 16px;
-    transition: background-color 0.3s;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.button:hover {
-    background-color: #45a049;
+/* Кнопка при наведении */
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
-.button.small {
-    padding: 5px 10px;
+/* Ошибка */
+.error-message {
+    color: #dc3545;
     font-size: 14px;
-    border-radius: 3px;
+    margin-top: 5px;
 }
