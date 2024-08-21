@@ -1,0 +1,29 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}
+    Подтверждение заказа
+{% endblock %}
+
+{% block content %}
+<div class="checkout-container">
+    <h2>Ваш заказ подтвержден!</h2>
+    <p class="thank-you-message">Спасибо за покупку. Ваш заказ №{{ order.id }} был успешно оформлен.</p>
+
+    <h3>Детали заказа:</h3>
+    <ul class="order-details">
+        {% for item in order_items %}
+            <li>{{ item.product.name }} - {{ item.quantity }} x {{ item.price }} руб.</li>
+        {% endfor %}
+    </ul>
+
+    <div class="form-group">
+        <p class="total-cost">Общая стоимость: {{ total_cost }} руб.</p>
+    </div>
+
+    <p>Ожидайте курьера.</p>
+
+    <div class="back-to-home">
+        <a href="{% url 'home' %}" class="btn btn-secondary">Назад к покупкам</a>
+    </div>
+</div>
+{% endblock %}

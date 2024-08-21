@@ -129,8 +129,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
 
-env = environ.Env()
-environ.Env.read_env()  # Читаем файл .env
-
-# Конфигурация email
-
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 1209600
+SESSION_COOKIE_NAME = 'sessionid'

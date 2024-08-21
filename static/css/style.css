@@ -633,7 +633,7 @@ h4 {
 
 /* Стили для кнопки оформления заказа */
 .cart-total .button {
-    background-color: #28a745; /* Зеленый фон кнопки */
+    background-color: #f05f40; /* Зеленый фон кнопки */
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -652,7 +652,7 @@ h4 {
 }
 
 .cart-total .button:active {
-    background-color: #1e7e34; /* Темнее при нажатии */
+    background-color: #f05f40; /* Темнее при нажатии */
 }
 
 /* Стиль для счетчика количества товаров в корзине */
@@ -865,7 +865,7 @@ h4 {
     padding: 12px 20px;
     font-size: 18px;
     color: #fff;
-    background-color: #28a745;
+    background-color: #f05f40;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -900,6 +900,194 @@ textarea.form-control {
 
 input[name="first_name"] {
     font-size: 20px;
+}
+
+.checkout-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.checkout-container h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+.checkout-container h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+.checkout-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.thank-you-message {
+    font-weight: bold;
+}
+
+.total-cost {
+    font-weight: bold;
+    font-size: 18px;
+    color: #28a745;
+    margin-top: 0;
+    text-align: center;
+}
+
+.order-details {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.order-details li {
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.back-to-home {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-secondary {
+    padding: 12px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #f05f40;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Убирает подчеркивание */
+}
+
+.btn-secondary:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Общие стили для контейнеров заказа и истории заказов */
+.order-history-container,
+.order-detail-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовки */
+.order-history-title,
+.order-detail-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Стили для элементов истории заказов */
+.order-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.order-history-table th,
+.order-history-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 16px;
+    color: #555;
+}
+
+.order-history-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+}
+
+.order-history-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-history-table td {
+    vertical-align: middle;
+}
+
+.order-history-empty {
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Стили для элементов деталей заказа */
+.order-detail-items-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.order-detail-item {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.order-detail-item-name,
+.order-detail-item-quantity,
+.order-detail-item-price {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.order-detail-total-cost {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Стили кнопок */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f05f40;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+.btn-view {
+    background-color: #f05f40; /* Задаем другой цвет для кнопки "Просмотреть" */
+}
+
+.btn-view:hover {
+    background-color: #218838;
 }
 
 

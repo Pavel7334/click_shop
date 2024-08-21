@@ -1,0 +1,39 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}
+    Мои заказы
+{% endblock %}
+
+{% block content %}
+<div class="order-history-container">
+    <h2 class="order-history-title">Мои заказы</h2>
+    {% if orders %}
+        <table class="order-history-table">
+            <thead>
+                <tr>
+                    <th>Номер заказа</th>
+                    <th>Дата создания</th>
+                    <th>Оплачен</th>
+                    <th>Сумма</th>
+                    <th>Детали</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.created|date:"d.m.Y H:i" }}</td>
+                        <td>{{ order.paid|yesno:"Да,Нет" }}</td>
+                        <td>{{ order.total_cost }} руб.</td>
+                        <td>
+                            <a href="{% url 'order_detail' order.id %}" class="btn btn-view">Просмотреть</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="order-history-empty">У вас нет заказов.</p>
+    {% endif %}
+</div>
+{% endblock %}

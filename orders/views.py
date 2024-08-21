@@ -5,7 +5,7 @@ from django.http import JsonResponse
 
 from .models import Product, Cart, CartItem, OrderItem, Order
 from .forms import OrderForm
-from .utils import send_order_confirmation_email
+from django.urls import reverse
 
 
 @login_required
@@ -108,48 +108,84 @@ def remove_item(request, item_id):
 #
 #     return render(request, 'orders/checkout.html', {'form': form, 'total_cost': total_cost})
 
+
 @login_required
 def checkout_view(request):
     try:
         cart = Cart.objects.get(user=request.user)
     except Cart.DoesNotExist:
         print("Корзина не найдена для пользователя.")
-        return redirect('cart')  # Перенаправление на страницу корзины, если корзина не найдена
+        return redirect('cart')
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            # Создание заказа
-            order = Order.objects.create(
-                user=request.user,
-                paid=False,
-            )
+            order = Order.objects.create(user=request.user, paid=False)
 
-            # Сохранение товаров в заказе
+            order_items = []
             for item in cart.items.all():
-                OrderItem.objects.create(
+                order_item = OrderItem.objects.create(
                     order=order,
                     product=item.product,
                     price=item.product.price,
                     quantity=item.quantity
                 )
+                order_items.append(order_item)
 
-            # Очистка корзины
             cart.items.all().delete()
 
-            # Отправка email
-            send_order_confirmation_email(order, request.user.email)
-
             print(f"Заказ {order.id} создан успешно.")
-            return redirect('order_confirmation')  # Перенаправление на страницу подтверждения заказа
+            return redirect(reverse('order_confirmation', args=[order.id]))
         else:
             print("Форма заказа невалидна:", form.errors)
     else:
         form = OrderForm()
 
-    # Вычисление общей стоимости корзины
     total_cost = cart.items.aggregate(
         total=Sum(F('product__price') * F('quantity'))
     )['total'] or 0
 
     return render(request, 'orders/checkout.html', {'form': form, 'total_cost': total_cost})
+
+
+def order_confirmation_view(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order_items = OrderItem.objects.filter(order=order)
+    total_cost = sum(item.price * item.quantity for item in order_items)
+
+    return render(request, 'orders/order_confirmation.html', {
+        'order': order,
+        'order_items': order_items,
+        'total_cost': total_cost,
+    })
+
+
+@login_required
+def order_history(request):
+    # Получаем все заказы пользователя
+    orders = Order.objects.filter(user=request.user)
+
+    # Создаем список с данными о каждом заказе, включая общую стоимость
+    order_data = []
+    for order in orders:
+        total_cost = sum(item.price * item.quantity for item in order.items.all())
+        order_data.append({
+            'id': order.id,
+            'created': order.created,
+            'updated': order.updated,
+            'paid': order.paid,
+            'total_cost': total_cost
+        })
+
+    return render(request, 'orders/order_history.html', {'orders': order_data})
+
+
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order_items = order.items.all()
+    total_cost = sum(item.price * item.quantity for item in order_items)  # Вычислить общую сумму
+    return render(request, 'orders/order_detail.html', {
+        'order': order,
+        'order_items': order_items,
+        'total_cost': total_cost
+    })
