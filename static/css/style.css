@@ -628,7 +628,7 @@ h4 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
     text-align: right; /* Выравнивание текста по правому краю */
     position: relative; /* Чтобы добавить отступ снизу относительно родителя */
-    padding-bottom: 60px; /* Дополнительный отступ снизу для кнопки оформления заказа */
+    padding-bottom: 10px; /* Дополнительный отступ снизу для кнопки оформления заказа */
 }
 
 /* Стили для кнопки оформления заказа */
@@ -641,9 +641,10 @@ h4 {
     text-decoration: none;
     display: inline-block;
     transition: background-color 0.3s, transform 0.2s;
-    position: absolute; /* Позволяет позиционировать кнопку относительно блока */
+    /*position: absolute; /* Позволяет позиционировать кнопку относительно блока */
     bottom: 15px; /* Расстояние от нижнего края блока */
     right: 15px; /* Расстояние от правого края блока */
+    margin-top: 10px;
 }
 
 .cart-total .button:hover {
@@ -1089,5 +1090,19 @@ input[name="first_name"] {
 .btn-view:hover {
     background-color: #218838;
 }
+
+.jumbotron-welcome {
+    font-family: 'Great Vibes', cursive;
+    font-size: 6em !important; /* Принудительное увеличение размера шрифта */
+    color: #ff7300; /* Основной цвет текста */
+    text-shadow:
+        2px 2px 8px rgb(255, 255, 255),  /* Светлая тень */
+        2px 2px 0 rgb(255, 255, 255), /* Тень для контраста */
+        -1px -1px 0 rgba(255, 255, 255, 0.7);
+}
+
+
+
+
 
 

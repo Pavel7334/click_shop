@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Click Shop{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -20,7 +23,7 @@
             <nav>
                 <ul>
                     <li><a href="{% url 'home' %}">Главная</a></li>
-                    <li><a href="{% url 'home' %}">Каталог</a></li>
+<!--                    <li><a href="{% url 'home' %}">Каталог</a></li>-->
                     <li><a href="{% url 'cart' %}">Корзина</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'order_history' %}">Мои заказы</a></li>
