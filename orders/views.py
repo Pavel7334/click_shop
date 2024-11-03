@@ -60,55 +60,6 @@ def remove_item(request, item_id):
         return JsonResponse({'error': 'Item not found'}, status=404)
 
 
-# def checkout(request):
-#     return render(request, 'orders/checkout.html')
-
-
-# @login_required
-# def checkout_view(request):
-#     try:
-#         cart = Cart.objects.get(user=request.user)
-#     except Cart.DoesNotExist:
-#         print("Корзина не найдена для пользователя.")
-#         return redirect('cart')  # Перенаправление на страницу корзины, если корзина не найдена
-#
-#     if request.method == 'POST':
-#         form = OrderForm(request.POST)
-#         if form.is_valid():
-#             # Создание заказа
-#             order = Order.objects.create(
-#                 user=request.user,
-#                 paid=False,
-#             )
-#
-#             # Сохранение товаров в заказе
-#             for item in cart.items.all():
-#                 OrderItem.objects.create(
-#                     order=order,
-#                     product=item.product,
-#                     price=item.product.price,
-#                     quantity=item.quantity
-#                 )
-#
-#             # Очистка корзины
-#             cart.items.all().delete()
-#
-#             # Отправка email
-#             send_order_confirmation_email(order, request.user.email)
-#
-#             print(f"Заказ {order.id} создан успешно.")
-#             return redirect('order_confirmation')  # Перенаправление на страницу подтверждения заказа
-#         else:
-#             print("Форма заказа невалидна:", form.errors)
-#     else:
-#         form = OrderForm()
-#
-#     # Вычисление общей стоимости корзины
-#     total_cost = cart.items.aggregate(total=Sum('product__price'))['total'] or 0
-#
-#     return render(request, 'orders/checkout.html', {'form': form, 'total_cost': total_cost})
-
-
 @login_required
 def checkout_view(request):
     try:
